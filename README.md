@@ -6,7 +6,10 @@ practicing git and codespaces
 * one
 * two
 * three
-  *italic*
-  **bold**
 
+  *italic*  
+  **bold**  
+
+Here is some C code
+I made these changes locally on my laptop
 ```
