@@ -1,59 +1,71 @@
-// Create true and false constants
-// Create int for correct, guess, and turn init to 0
-// Create boolean keepGoing
-// Create char[] for name
-//
-// Ask the user name, put in name
-// Greet user with name
-//
-// Generate a random number between 1 and 100, put in correct
-// 
-// While keepGoing is true:
-// 	Increment number of turns
-// 	Ask user for guess, put in guess
-// 	If guess < correct:
-// 		Print "too low"
-// 	If guess > correct:
-// 		Print "too high"
-// 	If guess is correct:
-// 		Print "you got it!"
-// 		Set keepGoing to false
+/* Algorithm:
+ *
+ * main():
+ * 	char[20] userName
+ * 	int guess starts -999
+ * 	int correct will be randomly generated later
+ * 	int turns starts at 0
+ * 	int keepGoing starts true
+ *
+ * 	generate a random between 1 and 100, put in correct
+ * 	ask for user's name
+ * 	store it in userName
+ *
+ * 	greet the user with name
+ *
+ * 	while keepGoing is true:
+ * 		increment turns
+ * 		ask for a number
+ * 		put it in guess
+ * 		if guess < correct:
+ * 			print too low
+ * 		else if guess > correct:
+ * 			print too high
+ * 		else:
+ * 			print you got it
+ * 			set keepGoing to false
+ *
+ * 	if turns < 7:
+ * 		say great
+ * 	else if turns > 7:
+ * 		say you could do better
+ * 	else:
+ * 		say pretty good
+*/
 
-#include<stdio.h>
-#include<time.h>
-#include<stdlib.h>
-
-#define TRUE -1;
-#define FALSE 0;
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdbool.h>
 
 int main(){
-	printf("Hi, What is your name? ");
-	scanf("%s", name);
-	
-	printf("Nice to meet you %s \n", name);
-	printf("Let's play a game.");
-	
+	char userName[20];
+	int turns = 0;
+	int guess = -999;
+	int keepGoing = true;
+
 	srand(time(NULL));
-	int x = rand();
-	int y = x % 100;
-	printf("%d \n", y);
+	int correct = (rand() % 100) + 1;
 
-	int keepGoing = TRUE;
+	printf("Hi, what's your name? ");
+	scanf("%s", userName);
+
+	printf("Let's play a game, %s \n", userName);
+
 	while (keepGoing){
-		tries += 1;
-		printf("Turn %d \n", tries);
-		printf("Please guess a number: ");
-		scanf("%s", guess);
-		
-		if (guess < y){
-			printf("Too low \n");
-		}
-		else if (guess > y){
-			printf("Too high \n");
-		}
-		else {
-			printf("You got it!");
+		turns++;
+		printf("Turn %d: Please enter a number. ", turns);
+		scanf("%d", &guess);
 
+		if (guess < correct){
+			printf("too low...\n");
+		} else if (guess > correct){
+			printf("too high...\n");
+		} else {
+			printf("You got it!!! \n");
+			keepGoing = false;
+		} // end if
 	} // end while
+	
 	return 0;
 } // end main
