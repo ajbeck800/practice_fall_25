@@ -58,6 +58,7 @@ int main(){
 } // end main
 
 int guess(){
+	int turns = 0;
 	int guess = -999;
 	int keepGoing = true;
 
