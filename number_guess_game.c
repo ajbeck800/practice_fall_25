@@ -38,19 +38,31 @@
 #include <time.h>
 #include <stdbool.h>
 
+int guess();
+void report(int, char*);
+
 int main(){
 	char userName[20];
+
+	printf("Hi what's your name? ");
+	scanf("%s", userName);
+
+	printf("Let's play a game, %s \n", userName);
+
 	int turns = 0;
+
+	turns = guess();
+	report(turns, userName);
+	
+	return 0;
+} // end main
+
+int guess(){
 	int guess = -999;
 	int keepGoing = true;
 
 	srand(time(NULL));
 	int correct = (rand() % 100) + 1;
-
-	printf("Hi, what's your name? ");
-	scanf("%s", userName);
-
-	printf("Let's play a game, %s \n", userName);
 
 	while (keepGoing){
 		turns++;
@@ -66,6 +78,15 @@ int main(){
 			keepGoing = false;
 		} // end if
 	} // end while
-	
-	return 0;
-} // end main
+	return turns;
+} // end guess
+
+void report(int score, char* name){
+	if (score < 7){
+		printf("Great job %s! \n", name);
+	} else if (score > 7){
+		printf("%s, you could have done better. \n", name);
+	} else {
+		printf("That was an average performance, %s \n", name);
+	} // end if
+} // end report
